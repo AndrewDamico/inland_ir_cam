@@ -1,0 +1,31 @@
+<launch>
+  <arg name="enable_raw" default="true"/>
+  <arg name="enable_imv" default="false"/>
+  <arg name="enable_comp" default="true"/>
+  <arg name="camera_id" default="0"/>
+  <arg name="camera_frame_id" default="ircam"/>
+  <arg name="camera_name" default="inland_ir"/>
+  <arg name="framerate" default="30"/>
+  <arg name="width" default="1024"/>
+  <arg name="height" default="768"/>
+  <arg name="quality" default="80"/>
+
+  <node type="inland_ir_cam" pkg="inland_ir_cam" name="inland_ir_cam" output="screen">
+    <param name="private_topics" value="true"/>
+
+    <param name="camera_frame_id" value="$(arg camera_frame_id)"/>
+    <param name="enable_raw" value="$(arg enable_raw)"/>
+    <param name="enable_comp" value="$(arg enable_comp)"/>
+    <param name="enable_imv" value="$(arg enable_imv)"/>
+    <param name="camera_id" value="$(arg camera_id)"/>
+
+    <param name="camera_info_url" value="package://inland_ir_cam/camera_info/inland_1024x768.yaml"/>
+    <param name="camera_name" value="$(arg camera_name)"/>
+    <param name="width" value="$(arg width)"/>
+    <param name="height" value="$(arg height)"/>
+
+    <param name="framerate" value="$(arg framerate)"/>
+    <param name="quality" value="$(arg quality)"/>    
+    
+  </node>
+</launch>
